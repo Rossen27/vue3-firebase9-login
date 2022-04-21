@@ -17,7 +17,7 @@ const router = useRouter() // get a reference to our vue router
 const register = () => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
-      console.log("Successfully registered!");
+      console.log("註冊成功!");
       router.push('/feed') // redirect to the feed
     })
     .catch((error) => {
