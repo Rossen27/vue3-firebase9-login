@@ -4,12 +4,11 @@
   <p><input type="password" placeholder="Password" v-model="password"></p>
   <p v-if="errMsg">{{ errMsg }}</p>
   <p><button @click="register">Submit</button></p>
-  <p><button @click="signInWithGoogle">Sign In With Google</button></p>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup  } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'vue-router';
 const email = ref("");
 const password = ref("");
@@ -42,17 +41,6 @@ const register = () => {
           errMsg.value = "Email or Password was incorrect";
           break;
       }
-    });
-};
-
-const signInWithGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      console.log(result.user);
-      router.push("/feed");
-    })
-    .catch((error) => {
     });
 };
 </script>
